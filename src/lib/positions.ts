@@ -1,0 +1,17 @@
+export const buttonPositions = [
+    "bottom: 15%",
+    "bottom: 15%",
+    "bottom: 15%",
+    "bottom: 15%; left: 15%;",
+    "bottom: 35%; left: 15%;",
+    "bottom: 65%; left: 15%;",
+    "bottom: 15%; right: 15%;",
+    "bottom: 35%; right: 15%;",
+    "bottom: 65%; right: 15%;",
+    "bottom: 15%; left: 10%;",
+    "bottom: 35%; left: 10%;",
+    "bottom: 65%; left: 10%;",
+    "bottom: 15%; right: 10%;",
+    "bottom: 35%; right: 10%;",
+    "bottom: 65%; right: 10%;",
+]
