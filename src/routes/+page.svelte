@@ -1,26 +1,27 @@
-<div class="w-screen h-screen gradient flex justify-center">
-    <div class="flex flex-col items-center justify-begin w-2/3 lg:w-5/12 ">
-        <div class="flex flex-row items-center height-20">
-            <div class="flex py-8 px-16 bg-slate-600 rounded-full">
-                <h1 class="text-white text-3xl text-center">{headerText}</h1>
-            </div>
-        </div>
-        <div class="flex flex-row justify-center max-height-gif max-width-gif mt-8">
-            <img class="h-full" src={g.url} alt={g.description}/>
-        </div>
-        
-    </div>
-    {#if !isAccepted}
-        <YesNoButtons {position} {noClickHandling} {noHoverHandling}/>
+<HeaderText {headerText}/>
+<div class="flex flex-row justify-center max-height-gif max-width-gif mt-8">
+    {#if g.url==''}
+        <LoadingSpinner/>
+    {:else}
+        <img class="h-full" src={g.url} alt={g.description}/>
     {/if}
 </div>
 
+{#if !isAccepted}
+<YesNoButtons {position} {noClickHandling} {noHoverHandling}/>
+{/if}
+
 <script lang="ts">
+    import { onMount } from 'svelte'
+
 	import { grab_data, gif_list } from '$lib/loadGifs';
     import {buttonPositions} from '$lib/positions';
-    import { onMount } from 'svelte'
     import type {Gif} from '$lib/loadGifs'
+
     import YesNoButtons from '$lib/components/YesNoButtons.svelte'
+	import LoadingSpinner from '$lib/components/LoadingSpinner.svelte';
+    import HeaderText from '$lib/components/HeaderText.svelte';
+
 
     onMount(async () => grab_data());
     
@@ -81,30 +82,8 @@
 
 </script>
 
-
 <style>
-    .gradient {
-        background: linear-gradient(45deg,#F17C58,#E94584,#24AADB,#27DBB1,#FFDC18,#FF3706);
-    }
 
-    .button-shadow {
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .max-height-gif {
-        max-height: 20rem;
-    }
-
-    .max-width-gif {
-        max-width: 30rem;
-    }
-    .height-20 {
-        height: 25%;
-    }
-
-    .height-40 {
-        height: 40%;
-    }
-
+    
 </style>
 
